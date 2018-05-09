@@ -12,7 +12,7 @@ export default class {
   }
   syncMainFromRenderer = () => {
     const { remote } = require('electron')
-    const { AppRegistry } = remote.require(__dirname)
+    const { AppRegistry } = remote.require('electron-remote-actions')
     AppRegistry.actions = this.actions
     this.__onRegistered = AppRegistry.__onRegistered
   }
