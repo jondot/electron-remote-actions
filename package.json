@@ -1,14 +1,13 @@
 {
   "name": "electron-remote-actions",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
     "start": "yarn self-link && yarn tsc -w",
     "watch": "jest --watch",
     "test": "yarn self-link && yarn build && jest",
-    "release":
-      "yarn build && git commit -am 'build'; yarn version && git push --tags && git push origin master",
+    "release": "yarn build && git commit -am 'build'; yarn version && git push --tags && git push origin master",
     "build": "yarn tsc",
     "self-link": "yarn link && yarn link electron-remote-actions"
   },
@@ -38,6 +37,13 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "src/__tests__/.*\\.(test|spec)\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
