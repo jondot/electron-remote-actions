@@ -1,22 +1,8 @@
-addons:
-  apt:
-    packages:
-      - xvfb
-  
-install:
-  - export DISPLAY=':99.0'
-  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-
 language: node_js
-
-cache: 
-  directories:
-  - node_modules
-  - "$HOME/.electron"
-  - "$HOME/.cache"
-
+cache: yarn
 node_js:
   - "8"
+  - "9"
 
 script: yarn test
 
@@ -24,7 +10,6 @@ jobs:
   include:
     - stage: npm
       node_js: "8"
-      os: linux
       if: tag =~ ^v\d.*
       deploy:
           provider: npm
