@@ -1,8 +1,26 @@
+addons:
+  apt:
+    packages:
+      - xvfb
+  
+install:
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+
+matrix:
+  include:
+  - os: linux
+
 language: node_js
-cache: yarn
+
+cache: 
+  directories:
+  - node_modules
+  - "$HOME/.electron"
+  - "$HOME/.cache"
+
 node_js:
   - "8"
-  - "9"
 
 script: yarn test
 
@@ -16,7 +34,7 @@ jobs:
           script: yarn build
           email: "jondotan@gmail.com"
           api_key:
-            secure: fGqPo4don8YwuxgM/QR68RvnSD38prYHqjWyXfdYTFi5xcVvUllIO/REtbQb0X1scbCP4WlvDVYQ7iCH/eh7uXM40RO0B+KSrHOUgngKtLKF104IRLZ48U4qkrJqB+VBxXHpqe2dlQyyOU4Z0RdcSI838EN7WSP802tWC4R/Vsg3B+E/gILnzjGX4dGFdHIqTOpMpcgchQRcfXIkHpFfQWF2Ww6NFwQ5aZzhmXPOxAt9AaaIwrNoNcndh+AqshDVgZzy2+S4NtPLEaEz7YdqqogkFoG1ma+oj4ZM/MhfESYowZYLqo7iqtGFN6RGxoivTUBWwakMz9/2ELrstKD7rtT3U7Et5HSt05sRnHXgNPTSYylnZJXbgprgT/gP9rhdQAMVZS2x6fX/WG4+ifIUG78ZWLLFfMMDn6OhRzbiJsHNMrXkxgg0vuMMU6gMriNHwNsA5Tva2wvuklrqr0nBA3+7YchczQspS+akKHIDI3fXxgBTJNXlqRuz1lWfN26hNxVOzBdmxPIsfwnYC703pc46iPPrpWp5wREjKJfxy85BSvCPO8K1/T7O4CnpIlgcVIGBtVopnhoKXQNVEbiEyiU3I2vyTthgK2ieJtacsu6EeQ2zCgAC73n/9W+nexu9zXvBK7lZSIHgoDByHCKuqBY0LIwrsLg7WRA46wn/VIk=
+            secure: "Sd6j8UCDzmg4AK2h0PKCm4GiDpD2Wv68aqOSXOq/Xonr9kNKBOGnTtWgAD59H+uWwtk/OxooP8MWMkLklSG2llHa8utQuof3CANbii9UJZMvY/ZT5BZR01TuHQSw3GnNMC82rhZSmwRcee5hkxjkW8fD547D+CmKdPt31BQqR/7RvVQKZaRaakc9GlC7ic+8a8rBxAApq7qXxeeUH6L1a8b/rdxHApR+8gc5GgGZBW32fQmd9XU9Iu5/OX5tRhxcfEjq1oYBxfq2ClRHGi3zJvs3EvnJ7VHUqjZcXs3XmsZoBoBlXeCGGEJLzi48sguMbQgi5qHuf9w4s2nUS7AchAytD7kEcnoLBW64NFT2N4XECUFNJQlLK3cEX+xR87zGB36Oe7KM5EVmR301PHNGqsJDWlxSGnwME2AOoFxPBptZeIjT0s5ID0g4075ga+vRuyudpIHXA7QBsvNw7M9pkTJOfq3ZcBVXmTRwVeTfCPjryvuDlxsHR2IbPNkL2sNf+nhhHQwW2HZcRk9w+Zo7Alt+gqs5oQIXzB6930PKu1KQlOosRzwo/1u/2Aq6bFZKJW35nhe0RVJa1db+YZCNhsCxQhkR/JwmLLmE4gYq9RbX5j0sN2Xfn0b3kGfNDqACAfU+z+ZtioXUGCFZeEMAbOpcUHYDMY7Qwe7I7PdVpDY="
           on:
             tags: true
             skip_cleanup: true

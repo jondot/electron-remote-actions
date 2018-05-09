@@ -1,30 +1,20 @@
 {
-  "name": "init-ts-lib",
+  "name": "electron-remote-actions",
   "version": "1.0.0",
   "license": "MIT",
   "main": "dist/index.js",
-  "bin": {
-    "init-ts-lib": "dist/index.js"
-  },
   "scripts": {
     "start": "tsc -w",
     "watch": "jest --watch",
-    "test": "jest",
-    "test:bin": "node dist/index.js",
+    "test": "yarn build && jest",
     "release":
       "yarn build && git commit -am 'build'; yarn version && git push --tags && git push origin master",
     "build": "tsc"
   },
-  "dependencies": {
-    "chalk": "^2.3.0",
-    "execa": "^0.9.0",
-    "fs-extra": "^5.0.0",
-    "inquirer": "^5.1.0",
-    "lodash": "^4.17.5",
-    "ora": "^1.4.0",
-    "yargs-parser": "^9.0.2",
-    "yarn": "^1.3.2"
+  "peerDependencies": {
+    "electron": "^2.0.0"
   },
+  "dependencies": {},
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/fs-extra": "^5.0.0",
@@ -34,8 +24,18 @@
     "@types/node": "^9.4.4",
     "@types/ora": "^1.3.1",
     "jest": "^22.4.3",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.3.2",
+    "spectron": "^3.8.0",
     "ts-jest": "^22.4.4",
     "tslint-config-prettier": "^1.7.0",
     "typescript": "^2.8.1"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "src/__tests__/.*\\.(test|spec)\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
   }
 }
