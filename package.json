@@ -4,12 +4,12 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "start": "./node_modules/.bin/tsc -w",
+    "start": "yarn tsc -w",
     "watch": "jest --watch",
     "test": "yarn build && jest",
     "release":
       "yarn build && git commit -am 'build'; yarn version && git push --tags && git push origin master",
-    "build": "./node_modules/.bin/tsc"
+    "build": "yarn tsc"
   },
   "peerDependencies": {
     "electron": "^2.0.0"
